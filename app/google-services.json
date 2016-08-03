@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "763562116893",
-    "firebase_url": "https://herd-de98c.firebaseio.com",
-    "project_id": "herd-de98c",
-    "storage_bucket": "herd-de98c.appspot.com"
+    "project_number": "376696612900",
+    "firebase_url": "https://herd-1741a.firebaseio.com",
+    "project_id": "herd-1741a",
+    "storage_bucket": "herd-1741a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:763562116893:android:479a783e18b701e5",
+        "mobilesdk_app_id": "1:376696612900:android:479a783e18b701e5",
         "android_client_info": {
           "package_name": "com.chrisdavid.herd"
         }
       },
       "oauth_client": [
         {
-          "client_id": "763562116893-t9ff6m09d3tljtng1pe63ses6e5lbj6h.apps.googleusercontent.com",
+          "client_id": "376696612900-kfb0qmq3gp66s6fgknmtohmv6nodjdsf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chrisdavid.herd",
+            "certificate_hash": "4B70A0C2DCEC329DC7BE5772F0435991B090C9CB"
+          }
+        },
+        {
+          "client_id": "376696612900-uuoepi7qrglluct49ild08p28797cget.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBA76wUnz_P7ntOvNRGPRqVr66JTvfPU7o"
+          "current_key": "AIzaSyDtmnsHadnwG9GlS12b8kXWVYaSCCYHT5s"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376696612900-uuoepi7qrglluct49ild08p28797cget.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
