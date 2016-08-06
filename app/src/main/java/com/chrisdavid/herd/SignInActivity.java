@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity implements
 
         // Config sign-in
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build();
 
@@ -74,6 +74,8 @@ public class SignInActivity extends AppCompatActivity implements
                 if(user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 }
                 else {
                     // User is signed out
@@ -102,7 +104,7 @@ public class SignInActivity extends AppCompatActivity implements
         }
     }
 
-    private void signIn() {
+    private void signInUser() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -161,7 +163,7 @@ public class SignInActivity extends AppCompatActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.signInButton:
-                signIn();
+                signInUser();
                 break;
             // TODO: Implement this in the near future
 //            case R.id.sign_out_button:
