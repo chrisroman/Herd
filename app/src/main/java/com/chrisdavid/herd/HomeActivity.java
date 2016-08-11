@@ -79,15 +79,7 @@ public class HomeActivity extends AppCompatActivity implements
             }
         };
 
-        // Set up Google API Client
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.web_client_id))
-                .requestEmail()
-                .build();
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+        mGoogleApiClient = UserAuthHelper.getGoogleApiClient(this);
     }
 
     /* Handles all sign-out requirements (Firebase, Google, etc.) */
@@ -106,7 +98,7 @@ public class HomeActivity extends AppCompatActivity implements
 
         // Once finished logging out, go back to sign in page
         finish();
-        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+        startActivity(new Intent(this, SignInActivity.class));
     }
 
     @Override

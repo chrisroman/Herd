@@ -1,6 +1,5 @@
 package com.chrisdavid.herd;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -8,15 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
@@ -27,7 +22,6 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class SignInActivity extends AppCompatActivity implements
@@ -52,18 +46,7 @@ public class SignInActivity extends AppCompatActivity implements
         // Button Listeners
         findViewById(R.id.signInButton).setOnClickListener(this);
 
-        // Config sign-in
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.web_client_id))
-                .requestEmail()
-                .build();
-
-        // Build a GoogleApiClient with access to Google Sign-In API and the
-        // options specified by gso
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+        mGoogleApiClient = UserAuthHelper.getGoogleApiClient(this);
 
         // Initialize auth and use its listener
         mAuth = FirebaseAuth.getInstance();
@@ -88,7 +71,6 @@ public class SignInActivity extends AppCompatActivity implements
         // Customize Google sign in button
         SignInButton signInButton = (SignInButton) findViewById(R.id.signInButton);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setScopes(gso.getScopeArray());
         setGooglePlusButtonText(signInButton, "GOOGLE");
     }
 
